@@ -23,6 +23,9 @@ namespace debttrackerService
             // config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
             
             Database.SetInitializer(new debttrackerInitializer());
+
+            // Allow authentication to happen locally for debug purposes
+            //config.SetIsHosted(true);
         }
     }
 

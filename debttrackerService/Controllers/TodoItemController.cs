@@ -4,11 +4,13 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.OData;
 using Microsoft.WindowsAzure.Mobile.Service;
+using Microsoft.WindowsAzure.Mobile.Service.Security;
 using debttrackerService.DataObjects;
 using debttrackerService.Models;
 
 namespace debttrackerService.Controllers
 {
+    [AuthorizeLevel(AuthorizationLevel.User)]
     public class TodoItemController : TableController<TodoItem>
     {
         protected override void Initialize(HttpControllerContext controllerContext)
