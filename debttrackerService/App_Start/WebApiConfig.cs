@@ -25,7 +25,7 @@ namespace debttrackerService
             Database.SetInitializer(new debttrackerInitializer());
 
             // Allow authentication to happen locally for debug purposes
-            //config.SetIsHosted(true);
+            config.SetIsHosted(true);
         }
     }
 

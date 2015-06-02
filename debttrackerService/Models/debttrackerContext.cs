@@ -27,6 +27,10 @@ namespace debttrackerService.Models
 
         public DbSet<TodoItem> TodoItems { get; set; }
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Debt> Debts { get; set; }
+        public DbSet<Friend> Friends { get; set; }
+        public DbSet<Group> Groups { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

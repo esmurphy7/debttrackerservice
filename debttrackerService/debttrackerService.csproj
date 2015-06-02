@@ -190,9 +190,14 @@
     <Compile Include="Authentication\LoginRequest.cs" />
     <Compile Include="Controllers\CustomLoginController.cs" />
     <Compile Include="Controllers\CustomRegistrationController.cs" />
+    <Compile Include="Controllers\DebtController.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
     <Compile Include="DataObjects\Account.cs" />
+    <Compile Include="DataObjects\Debt.cs" />
+    <Compile Include="DataObjects\Friend.cs" />
+    <Compile Include="DataObjects\Group.cs" />
     <Compile Include="DataObjects\TodoItem.cs" />
+    <Compile Include="DataObjects\User.cs" />
     <Compile Include="Models\debttrackerContext.cs" />
     <Compile Include="ScheduledJobs\SampleJob.cs" />
     <Compile Include="Global.asax.cs">
