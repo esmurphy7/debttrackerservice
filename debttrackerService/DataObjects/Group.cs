@@ -8,7 +8,6 @@ namespace debttrackerService.DataObjects
 {
     public class Group : EntityData
     {
-        public int GroupId { get; set; }
         public ICollection<User> Users { get; set; }
         public ICollection<Debt> Debts { get; set; }
     }

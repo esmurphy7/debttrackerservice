@@ -188,10 +188,14 @@
     <Compile Include="Authentication\CustomLoginProviderCredentials.cs" />
     <Compile Include="Authentication\CustomLoginResult.cs" />
     <Compile Include="Authentication\LoginRequest.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomLoginController.cs" />
     <Compile Include="Controllers\CustomRegistrationController.cs" />
     <Compile Include="Controllers\DebtController.cs" />
+    <Compile Include="Controllers\FriendController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DataObjects\Account.cs" />
     <Compile Include="DataObjects\Debt.cs" />
     <Compile Include="DataObjects\Friend.cs" />
