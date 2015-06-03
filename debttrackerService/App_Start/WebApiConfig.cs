@@ -48,20 +48,21 @@ namespace debttrackerService
             }
 
             // seed Accounts
-            var salt = CustomLoginProviderUtils.generateSalt();
+            var saltA = CustomLoginProviderUtils.generateSalt();
+            var saltB = CustomLoginProviderUtils.generateSalt();
             Account accountA = new Account()
             {
                 Id = Guid.NewGuid().ToString(),
                 Username = "seedaccount",
-                Salt = salt,
-                SaltedAndHashedPassword = CustomLoginProviderUtils.hash("seedaccount", salt)
+                Salt = saltA,
+                SaltedAndHashedPassword = CustomLoginProviderUtils.hash("seedaccountA", saltA)
             };
             Account accountB = new Account()
             {
                 Id = Guid.NewGuid().ToString(),
                 Username = "seedaccount",
-                Salt = salt,
-                SaltedAndHashedPassword = CustomLoginProviderUtils.hash("seedaccount", salt)
+                Salt = saltB,
+                SaltedAndHashedPassword = CustomLoginProviderUtils.hash("seedaccountB", saltB)
             };            
 
             // seed Users
@@ -109,7 +110,7 @@ namespace debttrackerService
             userA.Groups.Add(group);
             userB.Groups.Add(group);
             group.Debts.Add(debt);
-
+            
             context.Set<Account>().Add(accountA);
             context.Set<Account>().Add(accountB);
 
