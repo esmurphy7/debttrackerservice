@@ -59,6 +59,9 @@
     </VisualStudio>
   </ProjectExtensions>
   <ItemGroup>
+    <Reference Include="Microsoft.Contracts">
+      <HintPath>..\packages\Code.Contract.1.0.0\lib\net35\Microsoft.Contracts.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin.Host.SystemWeb">
       <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
     </Reference>
@@ -77,6 +80,7 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.Http">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>

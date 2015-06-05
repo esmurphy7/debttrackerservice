@@ -23,7 +23,7 @@ namespace debttrackerService
             // To display errors in the browser during development, uncomment the following
             // line. Comment it out again when you deploy your service for production use.
             // config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
-            
+
             Database.SetInitializer(new debttrackerInitializer());
 
             // Allow authentication to happen locally for debug purposes
@@ -53,14 +53,16 @@ namespace debttrackerService
             Account accountA = new Account()
             {
                 Id = Guid.NewGuid().ToString(),
-                Username = "seedaccount",
+                Email = "example@domain.com",
+                Username = "seedaccountA",
                 Salt = saltA,
                 SaltedAndHashedPassword = CustomLoginProviderUtils.hash("seedaccountA", saltA)
             };
             Account accountB = new Account()
             {
                 Id = Guid.NewGuid().ToString(),
-                Username = "seedaccount",
+                Email = "example@domain.com",
+                Username = "seedaccountA",
                 Salt = saltB,
                 SaltedAndHashedPassword = CustomLoginProviderUtils.hash("seedaccountB", saltB)
             };            
