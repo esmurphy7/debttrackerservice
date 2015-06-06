@@ -6,9 +6,11 @@ using System.Web.Http.OData;
 using Microsoft.WindowsAzure.Mobile.Service;
 using debttrackerService.DataObjects;
 using debttrackerService.Models;
+using Microsoft.WindowsAzure.Mobile.Service.Security;
 
 namespace debttrackerService.Controllers
 {
+    [AuthorizeLevel(AuthorizationLevel.User)]
     public class UserController : TableController<User>
     {
         protected override void Initialize(HttpControllerContext controllerContext)

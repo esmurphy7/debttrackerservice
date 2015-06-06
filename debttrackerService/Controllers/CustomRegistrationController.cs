@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
+using System.Net.Mail;
+using System.Text.RegularExpressions;
 using System.Web.Http;
+using debttrackerService.Authentication;
+using debttrackerService.DataObjects;
+using debttrackerService.Models;
 using Microsoft.WindowsAzure.Mobile.Service;
 using Microsoft.WindowsAzure.Mobile.Service.Security;
-using debttrackerService.Authentication;
-using System.Text.RegularExpressions;
-using debttrackerService.Models;
-using debttrackerService.DataObjects;
-using System.Web.Http.Controllers;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Bson;
-using Newtonsoft.Json.Linq;
 
 namespace debttrackerService.Controllers
 {
@@ -33,7 +28,7 @@ namespace debttrackerService.Controllers
             bool isValid;
             try
             {
-                var addr = new System.Net.Mail.MailAddress(registrationRequest.Email);
+                var addr = new MailAddress(registrationRequest.Email);
                 isValid = true;
             }
             catch (Exception e)
