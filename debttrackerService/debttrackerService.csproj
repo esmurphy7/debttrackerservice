@@ -192,6 +192,7 @@
     <Compile Include="Authentication\CustomLoginProviderCredentials.cs" />
     <Compile Include="Authentication\CustomLoginResult.cs" />
     <Compile Include="Authentication\LoginRequest.cs" />
+    <Compile Include="Authentication\RegistrationResponse.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomLoginController.cs" />
     <Compile Include="Controllers\CustomRegistrationController.cs" />

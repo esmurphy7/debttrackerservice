@@ -11,6 +11,9 @@ using System.Text.RegularExpressions;
 using debttrackerService.Models;
 using debttrackerService.DataObjects;
 using System.Web.Http.Controllers;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Bson;
+using Newtonsoft.Json.Linq;
 
 namespace debttrackerService.Controllers
 {
@@ -19,47 +22,55 @@ namespace debttrackerService.Controllers
     public class CustomRegistrationController : ApiController
     {
         public ApiServices Services { get; set; }
-        
+
         // POST api/CustomRegistration
-        public HttpResponseMessage Post(RegistrationRequest registrationRequest)
+        public RegistrationResponse Post(RegistrationRequest registrationRequest)
         {
+            HttpStatusCode statusCode;
+            string message = String.Empty;
+
             // Validate email
             bool isValid;
-            try 
+            try
             {
                 var addr = new System.Net.Mail.MailAddress(registrationRequest.Email);
                 isValid = true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 isValid = false;
             }
             if (isValid == false)
             {
-                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid email address");
+                statusCode = HttpStatusCode.BadRequest;
+                message = "Invalid email address";
             }
             // Validate username
             else if (!Regex.IsMatch(registrationRequest.Username, "^[a-zA-Z0-9]{4,}$"))
             {
-                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid username (at least 4 chars, alphanumeric only)");
+                statusCode = HttpStatusCode.BadRequest;
+                message = "Invalid username (at least 4 chars, alphanumeric only)";
             }
             // Validate password
             else if (registrationRequest.Password.Length < 8)
             {
-                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid password (at least 8 chars required)");
+                statusCode = HttpStatusCode.BadRequest;
+                message = "Invalid password (at least 8 chars required)";
             }
 
             debttrackerContext context = new debttrackerContext();
             Account account = context.Accounts.Where(a => a.Username == registrationRequest.Username).SingleOrDefault();
             if (account != null)
             {
-                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "That username already exists.");
+                statusCode = HttpStatusCode.BadRequest;
+                message = "That username already exists.";
             }
             else
             {
                 byte[] salt = CustomLoginProviderUtils.generateSalt();
                 Account newAccount = new Account
                 {
+                    Email = registrationRequest.Email,
                     Id = Guid.NewGuid().ToString(),
                     Username = registrationRequest.Username,
                     Salt = salt,
@@ -67,8 +78,18 @@ namespace debttrackerService.Controllers
                 };
                 context.Accounts.Add(newAccount);
                 context.SaveChanges();
-                return this.Request.CreateResponse(HttpStatusCode.Created);
+
+                statusCode = HttpStatusCode.Created;
+                message = "Account Registered Successfully";
             }
+
+            var response = new RegistrationResponse()
+            {
+                StatusCode = statusCode,
+                Message = message
+            };
+
+            return response;
         }
     }
 }
